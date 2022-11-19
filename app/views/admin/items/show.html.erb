@@ -1,17 +1,17 @@
 <h1>商品詳細</h1>
 
-  <%= image_tag item.get_profile_image(100,100) %>
+  <%= image_tag @item.get_profile_image(100,100) %>
 
   <h3>商品名</h3>
-  　<%= item.name %>
+  　<%= @item.name %>
   <h3>商品説明</h3>
-  　<%= item.introduction %>
+  　<%= @item.introduction %>
   <h3>ジャンル</h3>
-  　<%= item.genre_id %>
+  　<%= @item.genre_id %>
   <h3>税込価格<br>(税抜価格)</h3>
-    <%= =item.price*1.1 "(item.price)" %> 税込？
+    <%= =@item.price*1.1 "(item.price)" %> 税込？
   <h3>販売ステータス</h3>
-  　<%= item.is_active %>
+  　<%= @item.is_active %>
 
   <%= link_to edit_admin_item_path(item.id), class: "btn btn-outline-secondary" do %>
   <h1>編集する</h1>
