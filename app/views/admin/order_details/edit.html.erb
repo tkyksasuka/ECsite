@@ -1,0 +1,66 @@
+<h1>注文履歴詳細</h1>
+
+<h2>購入者</h2>
+<%= @order_detail.customer.name %>
+
+<h2>注文日</h2>
+<%= @order_detail.create_at %>
+
+<h2>配送先</h2>
+<%= @order_detail.customer.address %>
+
+<h2>支払方法</h2>
+<%= @order_detail.order.payment_method %>
+
+<h2>注文ステータス</h2>
+<%= form_with model: @order_detail, method: :patch do |f| %>
+<%= f.purudown :status %>
+<%= f.submit "更新" %>
+<% end %>
+
+
+<table>
+  <thead>
+    <tr colspan="6">
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製作ステータス</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= form_with model: @order_detail, method: :patch do |f| %>
+    <tr>
+      <td>
+        <%= order_detail.item_id.name %>
+      </td>
+      <td>
+        <%= order_detail.order_id.price %>
+      </td>
+      <td>
+        <%= order_detail.amount %>
+      </td>
+      <td>
+        <%= order_detail.price %> price*amount
+      </td>
+      <td>
+        <%= f.purudown :status %>
+      </td>
+      <td>
+        <%= f.submit "更新" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+
+  <h2>商品合計</h2>
+  <%= @order_detail.order_price %>
+  <h2>送料</h2>
+  <%= @order_detail.order.postage %>
+  <h2>請求金額合計</h2>
+  <%= @order_detail.order.billing_amount %>
+
+
