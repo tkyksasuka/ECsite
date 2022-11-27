@@ -1,0 +1,29 @@
+<h2>注文情報入力</h2>
+
+<h2>支払方法</h2>
+　ボタン　<h3>クレジットカード</h3>
+　ボタン　<h3>銀行振込</h3>
+
+<h2>お届け先</h2>
+　ボタン  <h3>ご自身の住所</h3>
+　        <%= order.custmer.address %>
+
+  ボタン  <h3>登録済み住所から選択</h3>
+          <%= order.shipping_address %> プルダウン
+
+  ボタン  <h3>新しいお届け先</h3>
+          <%= form_with model: @order_new do |f| %>
+          <h4>
+          郵便番号(ハイフンなし)<%= f.text_field :shipping_postal_code %>
+          </h4>
+           <h4>
+          住所<%= f.text_field :shipping_address %>
+          </h4>
+           <h4>
+          宛名<%= f.text_field :shipping_name %>
+          </h4>
+          <%= f.submit '確認画面へ進む' %>
+
+          <% link_to complete_order_path(id) %>
+          
+          <% end %>
