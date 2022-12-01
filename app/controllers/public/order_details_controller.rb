@@ -7,6 +7,8 @@ class Public::OrderDetailsController < ApplicationController
   end
 
   def edit
+    @order_detail = Order_detail.find(params[:id])
+    @order_detail.update
   end
 
 

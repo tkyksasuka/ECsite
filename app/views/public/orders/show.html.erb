@@ -1,0 +1,67 @@
+<h2>注文履歴詳細</h2>
+
+<h3>注文情報</h3>
+
+<div>
+<%= f.label :注文日 %>
+<%= @order.created_at %>
+</div>
+
+<div>
+<%= f.label :配送先 %>
+<%= @order.shipping_address %>
+</div>
+
+<div>
+<%= f.label :支払方法 %>
+<%= @order.payment_method %>
+</div>
+
+<div>
+<%= f.label :ステータス %>
+<%= @order.status %>
+</div>
+
+<h3>請求情報</h3>
+<div>
+<%= f.label :商品合計 %>
+<%= @order.order_detail.order_price %>
+</div>
+
+<div>
+<%= f.label :配送料 %>
+<%= @order.postage %>
+</div>
+
+<div>
+<%= f.label :ご請求額 %>
+<%= @order.billing_amount %>
+</div>
+
+<h3>注文内容</h3>
+<table>
+  <thead>
+    <tr colspan = "4">
+      <th>商品</th>
+      <th>単価(税込)</th>
+      <th>個数</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <%= order.item.name %>
+      </td>
+      <td>
+        <%= order.item.price %>
+      </td>
+      <td>
+        <%= order.order_detail.amount %>
+      </td>
+      <td>
+        <%= order.item.price*order.order_detail.amount %>
+      </td>
+    </tr>
+  </tbody>
+</table>
