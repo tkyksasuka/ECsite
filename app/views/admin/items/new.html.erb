@@ -1,18 +1,24 @@
 <h1>商品新規登録</h1>
 
-<%= form_with model: item_new do |f| %>
+<%= form_with model: @new_item do |f| %>
     <h3>商品画像</h3>
       <%= f.file_field :item_image, accept: "image,/*" %>
     <h3>商品名</h3>
-      <%= f.text_text :name %>
+      <%= f.text_field :name %>
     <h3>商品説明</h3>
-      <%= f.text_field :introduction %>
+      <%= f.text_area :introduction %>
     <h3>ジャンル</h3>
-      <% "プルダウン" %>
-    <h3>税抜価格</h3>
-      <%= f.text_field :price %>
+      <%=f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "--選択してください--" %>
+    <h3>税抜価格
+      <%= f.text_field :price, :prompt => "1000" %> 円
+    </h3>
     <h3>販売ステータス</h3>
-      <% "押しボタン" %>
+      <%= f.radio_button :is_active, true %>
+      <%= f.label :is_active, "販売中" %>
 
+      <%= f.radio_button :is_active, false %>
+      <%= f.label :is_active, "販売停止中" %>
+    <h2>
       <%= f.submit '新規登録' %>
+    </h2>
 <% end %>
