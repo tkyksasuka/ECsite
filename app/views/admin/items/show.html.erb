@@ -7,9 +7,9 @@
   <h3>商品説明</h3>
   　<%= @item.introduction %>
   <h3>ジャンル</h3>
-  　<%= @item.genre_id %>
+  　<%= @item.genre_id.name %>
   <h3>税込価格<br>(税抜価格)</h3>
-    <%= =@item.price*1.1 "(item.price)" %> 税込？
+    <%= (@item.price*1.1).floor (@item.price) %> 税込？
   <h3>販売ステータス</h3>
   　<%= @item.is_active %>
 

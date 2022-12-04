@@ -6,6 +6,10 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @new_item = Item.new
+  end
+
+  def create
+    @new_item = Item.new
     if @new_item.save
        redirect_to admin_items_path
     else
