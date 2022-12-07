@@ -1,9 +1,14 @@
 class Admin::OrderDetailsController < ApplicationController
 
-  def update
+  def edit
     @order_detail = Order_detail.find(params[:id])
-    @order_detail.update
-    redirect_to admin_order_path
+    if@order_detail.update
+      redirect_to admin_order_path
+    else
+      @order_detail = Order_detail.find(params[:id])
+      render :edit
+    end
+      
   end
-
+  
 end

@@ -44,10 +44,10 @@
         <%= order_detail.amount %>
       </td>
       <td>
-        <%= order_detail.price*amount %>
+        <%= order_detail.sum_of_price %>
       </td>
       <td>
-        <%=f.collection_select :making_status, Order_details.all, :making_status %>
+        <%= f.collection_select :making_status, Order_details.all, :making_status %>
       </td>
       <td>
         <%= f.submit "更新" %>
@@ -58,10 +58,10 @@
   </table>
 
   <h2>商品合計</h2>
-  <%= @order_detail.order_id. %>
+  　<%= @order_detail.subtotal %>
   <h2>送料</h2>
-  <%= @order_detail.order_id.shipping_cost %>
+  　<%= @order_detail.order_id.shipping_cost %>
   <h2>請求金額合計</h2>
-  <%= @order_detail.order_id.total_payment %>
+  　<%= @order_detail.order_id.total_payment %>
 
 
