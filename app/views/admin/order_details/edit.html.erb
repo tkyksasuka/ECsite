@@ -1,20 +1,20 @@
 <h1>注文履歴詳細</h1>
 
 <h2>購入者</h2>
-<%= @order_detail.order_id.customer_id.name %>
+<%= @order_detail.order.customer.name %>
 
 <h2>注文日</h2>
 <%= @order_detail.create_at %>
 
 <h2>配送先</h2>
-<%= @order_detail.order_id.address %><br>
-<%= @order_detail.order_id.name %>
+<%= @order_detail.order.address %><br>
+<%= @order_detail.order.name %>
 
 <h2>支払方法</h2>
-<%= @order_detail.order_id.payment_method %>
+<%= @order_detail.order.payment_method %>
 
 <h2>注文ステータス</h2>
-<%= form_with model: @order, method: :patch do |f| %>
+<%= form_with model: @order_detail, url: admin_order_detail_path, method: :patch do |f| %>
 <%=f.collection_select :status, Orders.all, :status %>
 <%= f.submit "更新" %>
 <% end %>

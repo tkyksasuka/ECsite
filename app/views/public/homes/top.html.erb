@@ -8,10 +8,9 @@
 </h2>
 
 <h1>新着商品</h1>
-#4つ
-<% @items.each do |item| %>
 
-<%= item.image %>
+<% @items.each do |item| %>
+<%= item.get_item_image(100,100) %>
 <%= item.name %>
 <%= item.price %>
 

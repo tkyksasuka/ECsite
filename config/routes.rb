@@ -19,7 +19,7 @@ end
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
-    get 'admin' => 'admin#homes#top'
+    get 'admin' => 'homes#top'
 
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update]
