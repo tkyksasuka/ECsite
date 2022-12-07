@@ -8,8 +8,6 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.string :shipping_name
       t.integer :postage
       t.integer :billing_amount
-      t.integer :payment_method #enum
-      t.integer :status #enum
 
 
       t.timestamps

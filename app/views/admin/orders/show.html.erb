@@ -1,5 +1,5 @@
 <h1>
-  <%= @order.customer.name %>さんの注文履歴
+  <%= @order.customer_id.name %>さんの注文履歴
 </h1>
 
 <table>
@@ -11,6 +11,7 @@
     </tr>
   </thead>
   <tbody>
+    <% @orders.each do |order| %>
     <tr>
       <td>
         <%= @order.create_at %>
@@ -22,6 +23,7 @@
         <%= @order.status %>
       </td>
     </tr>
+    <% end %>
+    <%= paginate @orders %>
   </tbody>
-  ページネーション
 </table>

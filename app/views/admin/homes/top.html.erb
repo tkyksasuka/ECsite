@@ -16,7 +16,7 @@
         <%= order.create_at %>
       </td>
       <td>
-        <%= order.customer.name %>
+        <%= order.customer_id.name %>
       </td>
       <td>
         <%= order.order_detail.amount %>
@@ -25,7 +25,7 @@
         <%= order.status %>
       </td>
     </tr>
+    <% end %>
+    <%= paginate @orders %>
   </tbody>
-  ページネーション
-  <% end %>
 </table>

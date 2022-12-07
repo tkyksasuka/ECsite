@@ -18,8 +18,13 @@
 <h2>メールアドレス</h2>
 <%= f.text_field :telephone_number %>
 <h2>会員ステータス</h2>
-<%= f.text_field :is_deleted %>
+ <%= f.radio_button :is_deleted, true %>
+ <%= f.label :is_deleted, "有効" %>
+ <%= f.radio_button :is_deleted, false %>
+ <%= f.label :is_deleted, "退会" %>
 
 <%= f.submit "変更を保存" %>
 
 <% end %>
+
+

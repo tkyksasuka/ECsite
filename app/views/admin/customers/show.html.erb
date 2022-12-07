@@ -17,6 +17,6 @@
 <h2>会員ステータス</h2>
 <%= @customer.is_deleted %>
 
-<%= link_to edit_customer_path(@customer.id) do %>
+<%= link_to edit_admin_customer_path(@customer.id) do %>
 <h1>編集する</h1>
 <% end %>

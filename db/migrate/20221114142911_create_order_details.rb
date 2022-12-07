@@ -6,7 +6,6 @@ class CreateOrderDetails < ActiveRecord::Migration[6.1]
       t.integer :order_id
       t.integer :order_price
       t.integer :amonut
-      t.integer :makeing_status #enum
 
 
       t.timestamps
