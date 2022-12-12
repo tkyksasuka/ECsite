@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get 'about' => 'homes#about'
 
+    get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch '/customers/withdraw' => '/customers#withdraw', as: 'withdraw'
+
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :destroy, :destroy_all]
     resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
