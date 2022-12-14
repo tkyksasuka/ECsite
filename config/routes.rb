@@ -1,28 +1,27 @@
 Rails.application.routes.draw do
 
- scope module: :public do
- devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
-    root to: 'homes#top'
-    get 'about' => 'homes#about'
+    scope module: :public do
+        devise_for :customers,skip: [:passwords], controllers: {
+          registrations: "public/registrations",
+          sessions: 'public/sessions'
+        }
+        root to: 'homes#top'
+        get 'about' => 'homes#about'
 
-    get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
-    patch '/customers/withdraw' => '/customers#withdraw', as: 'withdraw'
+        get '/customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+        patch '/customers/withdraw' => '/customers#withdraw', as: 'withdraw'
 
-    resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :create, :destroy, :destroy_all]
-    resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
-    resources :order_details, only: [:index, :edit, :create, :update, :destroy]
-    resources :customers, only: [:show, :edit, :update]
+        resources :items, only: [:index, :show]
+        resources :cart_items, only: [:index, :create, :destroy, :destroy_all]
+        resources :orders, only: [:new, :comfirm, :complete, :create, :index, :show]
+        resources :order_details, only: [:index, :edit, :create, :update, :destroy]
+        resources :customers, only: [:show, :edit, :update]
+    end
 
-end
-
- namespace :admin do
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
+    namespace :admin do
+      devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+      sessions: "admin/sessions"
+    }
     get 'admin' => 'homes#top'
 
     resources :items, only: [:index, :new, :create, :show, :edit, :update]

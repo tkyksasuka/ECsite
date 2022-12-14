@@ -1,14 +1,13 @@
-<%= render 'genre', {items: @items, item: @item} %>
+<%= render 'genre' %>
 
 <h1>商品一覧（全X件）</h1>
 ８つ
 
 <% @items.each do |item| %>
 
-<%= item.image %>
+<%= item.get_item_image(100,100) %>
 <%= item.name %>
 <%= item.price %>
 
-ページネーション
-
 <% end %>
+<%= paginate @items %>
