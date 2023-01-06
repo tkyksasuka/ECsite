@@ -1,29 +1,32 @@
 <h2>注文情報入力</h2>
 
 <h2>支払方法</h2>
-ボタン<h3>クレジットカード</h3>
-ボタン<h3>銀行振込</h3>
+<%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+<%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %>
+
+<%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+<%= f.label :payment_method_transfer, Order.payment_methods_i18n[:transfer]%>
 
 <h2>お届け先</h2>
-ボタン  <h3>ご自身の住所</h3>
-        <%= order.custmer.address %>
+<%= f.radio_button :custmers_address, current_custmer_address %>
+<%= f.label :custmer_address, current_custmer_address %>
 
-  ボタン  <h3>登録済み住所から選択</h3>
-          <%= order.shipping_address %> プルダウン
+<%= f.radio_button :address_id, '登録済み住所から選択' %>
+<%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
 
-  ボタン  <h3>新しいお届け先</h3>
-          <%= form_with model: @order_new do |f| %>
-          <h4>
-          郵便番号(ハイフンなし)<%= f.text_field :shipping_postal_code %>
-          </h4>
-           <h4>
-          住所<%= f.text_field :shipping_address %>
-          </h4>
-           <h4>
-          宛名<%= f.text_field :shipping_name %>
-          </h4>
-          <%= f.submit '確認画面へ進む' %>
+<%= form_with model: @order_new do |f| %>
+<%= f.radio_button :address_id, '新しいお届け先' %>
+ <h4>
+ 郵便番号(ハイフンなし)<%= f.text_field :postal_code %>
+ </h4>
+ <h4>
+ 住所<%= f.text_field :address %>
+ </h4>
+ <h4>
+ 宛名<%= f.text_field :name %>
+ </h4>
+ <%= f.submit '確認画面へ進む' %>
 
-          <% link_to complete_order_path(id) %>
+ <% link_to complete_order_path(order.id) %>
 
-          <% end %>
+ <% end %>

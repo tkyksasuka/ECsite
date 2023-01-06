@@ -1,14 +1,13 @@
 class Item < ApplicationRecord
   belongs_to :genre
-
   has_many :order_details, dependent: :destroy
 
   has_one_attached :item_image
 
   def add_tax_price
-        (self.price * 1.10).round
+    (self.price * 1.10).rounditem
   end
-  
+
   def subtotal
     item.add_tax_price * amount
   end

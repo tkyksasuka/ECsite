@@ -1,5 +1,5 @@
 <h2>ショッピングカート</h2>
-<%= link_to "カートを空にする", destroy_all_cart_item_path, method: :delete %>
+<%= "カートを空にする" %>
 
 <table>
   <thead>
@@ -15,6 +15,7 @@
     <% @cart_items.each do |cart_item| %>
     <tr>
       <td>
+        <%= cart_item.item.get_item_image(50,50) %>
         <%= cart_item.item.name %>
       </td>
       <td>
@@ -24,13 +25,13 @@
       <td>
         <%= f.select :amount, *[1..10] %>
         <%= f.submit '変更' %>
-      </td>
-      <% end %>
-      <td>
-        <%= cart_item.subtotal %>
+        <% end %>
       </td>
       <td>
-      <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, "data-confirm" %>
+        <%= cart_item.item.subtotal %>
+      </td>
+      <td>
+      <%= link_to "削除する", cart_item_path(cart_item), method: :delete %>
       </td>
       <%= @合計金額 += cart_item.subtotal %>
     </tr>
